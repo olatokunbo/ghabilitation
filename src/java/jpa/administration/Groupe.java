@@ -32,7 +32,8 @@ public class Groupe implements Serializable{
     
     @OneToMany(mappedBy = "groupe")
     private List<Habilitation> habilitations;
-    
+    @OneToMany(mappedBy = "groupe")
+    private List<Utilisateur> utilisateurs;
 
     public Groupe() {
     }
@@ -118,7 +119,13 @@ public class Groupe implements Serializable{
         return !((this.code == null && other.code != null) || (this.code != null && !this.code.equals(other.code)));
     }
     
-   
+    public List<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
     
     @PrePersist
     public void prePersist() {

@@ -25,7 +25,8 @@ public class Habilitation implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;
     
-    
+    @ManyToOne
+    private Utilisateur utilisateur;
     @ManyToOne
     private Groupe groupe;
 
@@ -56,7 +57,13 @@ public class Habilitation implements Serializable{
         this.dateCreation = dateCreation;
     }
     
-    
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 
     public Groupe getGroupe() {
         return groupe;
@@ -90,7 +97,7 @@ public class Habilitation implements Serializable{
     
     public void reset() {
         code = null;
-        
+        utilisateur =null;
         groupe=null;
     }
 
